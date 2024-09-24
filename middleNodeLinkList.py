@@ -1,31 +1,42 @@
-class Node:
-    def __init__(self,value) -> None:
-        self.value = value
-        self.next = None
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-#Hare and Tortoise Algo
-def findMiddle(list):
-    if(not list or not list.next or not list.next.next):
-        print("Size is less than 3, can't have middle element")
-    else:  
-        slow = list
-        fast = list  
-        while(fast != None and fast.next!=None):
-            slow = slow.next
-            fast = fast.next.next  
-        if(fast == None):
-            print("String is even, ccan't have a middle node")
+        # BrutForce
+        # head2 = head
+        # count1 = 0
+        # count2 = 1
+        # while(head2):
+        #     count1+=1
+        #     head2 = head2.next
+            
+
+        # head2 = head
+        # if(count1%2==0): #Length is even then there are two middle nodes 
+            
+        #     while(count2!=count1//2):
+        #         count2+=1
+        #         head2 = head2.next
+        #     return head2.next
+        # else:#Length is odd then ythere is single middle node
+        #     while(count2!=  (count1/2)+0.5):
+        #         head2 = head2.next
+        #         count2+=1
+        #     return head2
+
+
+    #Another approach is Kaydan's Algo
+        slow = head
+        fast = head.next
+        while(fast!=None and fast.next!=None):
+            slow= slow.next
+            fast = fast.next.next
+        if(fast==None):
+            return slow
         else:
-            print(f"Middle node is {slow.value}")
-
-linkList = Node(1)
-linkList.next = Node(2)
-linkList.next.next = Node(3)
-linkList.next.next.next = Node(12)
-findMiddle(linkList)
-
-
-
-
-
-    
+            return slow.next
+            
